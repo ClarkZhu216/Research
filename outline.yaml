@@ -1,0 +1,209 @@
+topic: "使用diffusion生成优化CLIP的表征"
+scope: "Focus on representation distillation, diffusion priors, counterfactual generation, and dense supervision for CLIP/VLM representation optimization."
+time_range: "since 2024"
+items:
+  - id: diffusion_features_auxiliary_representation
+    name: "Diffusion Features as Auxiliary Representation"
+    description: "Study methods that extract U-Net, VAE, latent, attention, score/noise, or denoising-trajectory features from diffusion models and align or fuse them with CLIP representations."
+    priority: high
+    rationale: "This is the core representation-transfer route: diffusion is not only a sample generator, but a teacher or structured feature source."
+    seed_sources:
+      - "https://arxiv.org/abs/2403.14291"
+      - "https://arxiv.org/abs/2502.04320"
+  - id: representation_distillation_between_diffusion_and_clip
+    name: "Representation Distillation Between Diffusion and CLIP"
+    description: "Methods that transfer diffusion model generative priors, spatial structure, object decomposition, or semantic manifolds into CLIP visual/text encoders."
+    priority: high
+    rationale: "Targets direct optimization of CLIP embeddings rather than only adding synthetic samples."
+    seed_sources: []
+  - id: dit_internal_dense_priors
+    name: "DiT-Internal Dense Priors for Local CLIP Supervision"
+    description: "Use diffusion transformer self-attention, output-space projections, instance edges, or token-level maps as dense supervision for local/region-aware CLIP representations."
+    priority: high
+    rationale: "Recent DiT models expose interpretable dense signals that may supervise CLIP beyond global image-text contrast."
+    seed_sources:
+      - "https://arxiv.org/abs/2502.04320"
+      - "https://openreview.net/forum?id=BjElYlJKMj"
+  - id: diffusion_region_mask_attention_supervision
+    name: "Diffusion-based Region, Mask, and Attention Supervision"
+    description: "Extract cross-attention, self-attention, masks, or editing trajectories from diffusion models to supervise CLIP's region-text and spatial alignment."
+    priority: high
+    rationale: "Region supervision is important for fine-grained attributes, relations, anomaly cues, and video localization."
+    seed_sources:
+      - "https://arxiv.org/abs/2403.14291"
+  - id: counterfactual_generation_for_representation_learning
+    name: "Diffusion-generated Counterfactuals for Representation Learning"
+    description: "Generate minimal semantic edits that change attributes, relations, actions, local anomalies, or shortcut cues, then train CLIP with contrastive or consistency objectives."
+    priority: high
+    rationale: "Counterfactuals can expose dimensions that vanilla CLIP often entangles or ignores."
+    seed_sources:
+      - "https://arxiv.org/abs/2402.08200"
+      - "https://arxiv.org/pdf/2407.15270"
+  - id: set_structured_counterfactual_training
+    name: "Set-Structured Counterfactual Training for CLIP"
+    description: "Study counterfactual pairs, tuples, or sets with inter-set and intra-set losses for compositional and causal representation learning."
+    priority: high
+    rationale: "The training unit shifts from independent image-text pairs to controlled semantic sets."
+    seed_sources:
+      - "https://openaccess.thecvf.com/content/ICCV2025/html/Jia_A_Visual_Leap_in_CLIP_Compositionality_Reasoning_through_Generation_of_ICCV_2025_paper.html"
+  - id: diffusion_causal_prompt_adapter_learning
+    name: "Diffusion-based Causal Prompt and Adapter Learning"
+    description: "Use diffusion counterfactuals to optimize CLIP prompts, adapters, LoRA modules, or lightweight heads toward causal-invariant representations."
+    priority: medium
+    rationale: "This is a low-cost alternative to full CLIP fine-tuning and is relevant for domain adaptation."
+    seed_sources:
+      - "https://arxiv.org/abs/2507.19882"
+  - id: compositional_relational_diffusion_data
+    name: "Compositional and Relational Diffusion Data"
+    description: "Generate controlled object-attribute, object-relation, spatial-layout, and action-relation samples to improve CLIP compositional reasoning."
+    priority: medium
+    rationale: "Compositionality is a known weakness of CLIP and a natural target for controlled generation."
+    seed_sources:
+      - "https://openaccess.thecvf.com/content/ICCV2025/html/Jia_A_Visual_Leap_in_CLIP_Compositionality_Reasoning_through_Generation_of_ICCV_2025_paper.html"
+  - id: domain_specific_diffusion_priors_for_clip
+    name: "Domain-specific Diffusion Priors for CLIP Adaptation"
+    description: "Adapt or exploit diffusion models in domains such as medical imaging, remote sensing, industrial defects, surveillance, and video anomaly detection to improve domain CLIP features."
+    priority: high
+    rationale: "Domain-specific priors are central when CLIP lacks fine-grained abnormality, defect, or medical semantics."
+    seed_sources:
+      - "https://arxiv.org/pdf/2407.15270"
+  - id: generator_personalization_for_representation_synthesis
+    name: "Generator Personalization for Representation Data Synthesis"
+    description: "Fine-tune or adapt the diffusion generator, e.g. via LoRA or concept/domain personalization, before generating data or priors for CLIP training."
+    priority: medium
+    rationale: "When the generator cannot represent the target domain, synthetic data or priors may be noisy and misleading."
+    seed_sources:
+      - "https://arxiv.org/abs/2507.13568"
+  - id: fully_synthetic_clip_pretraining
+    name: "Fully Synthetic CLIP Pretraining and Corpus Design"
+    description: "Investigate diffusion and LLM generated image-text corpora as full or partial replacements for real web-scale CLIP pretraining data."
+    priority: medium
+    rationale: "Although not pure distillation, synthetic-only regimes test whether generated distributions can support robust CLIP representations."
+    seed_sources:
+      - "https://arxiv.org/abs/2402.01832"
+  - id: synthetic_replay_continual_clip_adaptation
+    name: "Synthetic Replay for Continual CLIP/VLM Adaptation"
+    description: "Use diffusion-generated replay data to preserve old-task knowledge and zero-shot ability during continual CLIP/VLM fine-tuning."
+    priority: medium
+    rationale: "Replay connects generation to representation stability and catastrophic-forgetting control."
+    seed_sources:
+      - "https://arxiv.org/abs/2503.04229"
+      - "https://arxiv.org/abs/2507.13568"
+  - id: diffusion_data_condensation_budgeted_curriculum
+    name: "Diffusion-based Data Condensation and Budgeted Synthetic Curriculum"
+    description: "Select or generate compact high-value synthetic subsets, curricula, or replay buffers for representation learning under compute and annotation budgets."
+    priority: medium
+    rationale: "Diffusion generation is expensive; cost-normalized utility is crucial for practical CLIP optimization."
+    seed_sources:
+      - "https://arxiv.org/abs/2505.06670"
+  - id: shortcut_probe_debiasing
+    name: "Diffusion-generated Spurious and Shortcut Probes for CLIP Debiasing"
+    description: "Generate samples that isolate shortcut or spurious factors, then evaluate and correct CLIP's reliance on them."
+    priority: medium
+    rationale: "Useful for distinguishing genuine representation improvement from synthetic bias amplification."
+    seed_sources:
+      - "https://arxiv.org/abs/2402.08200"
+  - id: temporal_video_counterfactual_diffusion
+    name: "Temporal and Video Counterfactual Diffusion for Video-CLIP"
+    description: "Generate temporally consistent video counterfactuals or frame-level interventions to improve video CLIP representations and anomaly localization."
+    priority: high
+    rationale: "Highly relevant to video anomaly and FGCLIP-style work where motion, temporal context, and local abnormal cues matter."
+    seed_sources:
+      - "https://arxiv.org/abs/2506.14404"
+  - id: training_objectives_beyond_contrastive
+    name: "Training Objectives Beyond Standard Contrastive Learning"
+    description: "Compare contrastive, counterfactual, distillation, ranking, region-text, consistency, and causal invariance losses for diffusion-assisted CLIP training."
+    priority: high
+    rationale: "Objective design determines whether diffusion signals become useful representation constraints."
+    seed_sources: []
+  - id: evaluation_protocols_for_diffusion_optimized_clip
+    name: "Evaluation Protocols for Diffusion-optimized CLIP Representations"
+    description: "Assess representation quality through zero-shot classification, retrieval, linear probing, OOD robustness, compositionality, fine-grained recognition, segmentation, and video anomaly tasks."
+    priority: high
+    rationale: "Many synthetic gains are task-specific; robust evaluation is needed to identify real representation improvement."
+    seed_sources: []
+  - id: failure_modes_bias_and_leakage
+    name: "Failure Modes, Bias, and Leakage in Diffusion-optimized CLIP"
+    description: "Study synthetic collapse, generator bias, prompt leakage, memorization, distribution mismatch, style/aesthetic bias, and unfair baselines."
+    priority: high
+    rationale: "Synthetic data and diffusion priors can improve benchmarks while harming robustness or generalization."
+    seed_sources: []
+  - id: diffusion_feedback_reconstruction_for_clip
+    name: "Diffusion Feedback Reconstruction for CLIP Post-training"
+    description: "Study DIVA-like methods that feed CLIP visual representations into a pretrained diffusion reconstructor and backpropagate generative reconstruction feedback to improve CLIP's image encoder."
+    priority: high
+    rationale: "This is the most direct route from diffusion-as-teacher to reusable CLIP representation improvement, and it avoids relying on large synthetic corpora."
+    seed_sources:
+      - "https://arxiv.org/abs/2407.20171"
+      - "https://github.com/baaivision/DIVA"
+  - id: global_token_conditioned_generative_enhancement
+    name: "Global-token Conditioned Generative Enhancement"
+    description: "Study GenHancer-like designs that condition denoisers on selected CLIP tokens, especially global tokens, and use staged optimization or lightweight denoisers to improve vision-centric detail perception."
+    priority: high
+    rationale: "Token choice and staged training appear decisive: reconstruction quality alone is not enough, and local-token leakage can weaken representation learning."
+    seed_sources:
+      - "https://arxiv.org/abs/2503.19480"
+      - "https://mashijie1028.github.io/GenHancer"
+  - id: contrastive_guided_diffusion_reconstruction
+    name: "Contrastive-guided Diffusion Reconstruction for Balanced CLIP Features"
+    description: "Study DCR-like objectives that add contrastive or discriminative signals to diffusion reconstruction, balancing fine-grained detail perception with class-level separability."
+    priority: high
+    rationale: "Pure reconstruction can improve details while hurting discrimination; this item targets the loss-balancing problem most relevant to CLIP adaptation."
+    seed_sources:
+      - "https://arxiv.org/abs/2603.04803"
+      - "https://github.com/boyuh/DCR"
+  - id: unclip_inversion_for_clip_detail_preservation
+    name: "unCLIP Inversion for CLIP Detail Preservation"
+    description: "Study un2CLIP-like methods that invert unCLIP or related generators to improve CLIP image embeddings while preserving compatibility with the original text-aligned embedding space."
+    priority: medium
+    rationale: "Embedding-compatible generator inversion is a clean alternative to generic diffusion reconstruction because the generator is already conditioned on CLIP image embeddings."
+    seed_sources:
+      - "https://arxiv.org/abs/2505.24517"
+  - id: diffusion_feature_layer_timestep_selection
+    name: "Layer and Timestep Selection for Diffusion Feature Transfer"
+    description: "Systematically study which diffusion activations, layers, attention tensors, timesteps, and backbone stages are most discriminative for CLIP-like representation learning."
+    priority: high
+    rationale: "Existing evidence suggests up-stage U-Net queries and early-to-mid timesteps are often useful, but the selection protocol remains a major hidden variable."
+    seed_sources:
+      - "https://arxiv.org/abs/2410.03558"
+      - "https://diffusionfeatures.github.io/"
+  - id: diffusion_feature_fusion_for_vlm_clip
+    name: "Diffusion Feature Fusion for CLIP and VLM Encoders"
+    description: "Study Mustafar-like approaches that fuse frozen diffusion features with CLIP or VLM visual tokens through projectors, cross-attention, or lightweight multimodal adapters."
+    priority: high
+    rationale: "Feature fusion is the fastest practical route for testing whether diffusion internals improve downstream FGCLIP or annotation pipelines before full encoder post-training."
+    seed_sources:
+      - "https://arxiv.org/abs/2507.07106"
+      - "https://vatsalag99.github.io/mustafar/"
+  - id: repa_style_hidden_state_alignment
+    name: "REPA-style Hidden-state Alignment Between Diffusion and Vision Encoders"
+    description: "Study REPA and U-REPA style representation alignment, where diffusion hidden states are projected toward strong pretrained vision encoder features or manifold geometry, and assess whether the direction can be inverted or adapted for CLIP enhancement."
+    priority: medium
+    rationale: "These methods show that diffusion hidden states and discriminative visual representations can be aligned, which may inspire bidirectional distillation between diffusion and CLIP."
+    seed_sources:
+      - "https://arxiv.org/abs/2410.06940"
+      - "https://arxiv.org/abs/2503.18414"
+      - "https://github.com/sihyun-yu/REPA"
+      - "https://github.com/YuchuanTian/U-REPA"
+  - id: clip_patch_adapter_from_diffusion_dense_signals
+    name: "CLIP Patch Adapters from Diffusion Dense Signals"
+    description: "Study lightweight CLIP patch-level adapters supervised by diffusion attention maps, concept maps, correspondences, or dense features, with the goal of improving local semantic and abnormal-cue representation without full CLIP retraining."
+    priority: high
+    rationale: "This is the most project-actionable bridge from diffusion features to FGCLIP/video anomaly pipelines: keep CLIP mostly frozen, add local adapters, and supervise them with diffusion-derived dense cues."
+    seed_sources:
+      - "https://arxiv.org/abs/2403.14291"
+      - "https://arxiv.org/abs/2502.04320"
+      - "https://arxiv.org/abs/2306.03881"
+execution:
+  batch_size: 4
+  items_per_agent: 1
+  output_dir: "./results"
+notes:
+  preferred_deep_research_focus:
+    - "Prioritize methods where diffusion supplies features, priors, counterfactual structure, or dense supervision."
+    - "Treat plain data augmentation as secondary unless it changes CLIP representation learning objectives or evaluation."
+    - "Flag direct relevance to CueBench, counterfactual generation, video anomaly detection, and FGCLIP-style pipelines."
+  focused_followup_from_items_2_and_3:
+    - "Focus on diffusion-as-teacher and diffusion-as-feature-reservoir rather than synthetic data scaling."
+    - "Prioritize DIVA, GenHancer, DCR, un2CLIP, DIFT, Mustafar, REPA/U-REPA, OVAM, and ConceptAttention style mechanisms."
+    - "For current project design, emphasize CLIP image encoder post-training, patch-level adapters, dense cue supervision, and preservation of the original text encoder."

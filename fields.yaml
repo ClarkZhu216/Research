@@ -1,0 +1,136 @@
+topic: "使用diffusion生成优化CLIP的表征"
+field_categories:
+  - name: "Basic Info"
+    category: "Basic Info"
+    fields:
+      - name: method_name
+        description: "Name of the paper, method, benchmark, or project."
+        detail_level: brief
+      - name: publication_info
+        description: "Year, venue, preprint status, authors, affiliations, and source URL."
+        detail_level: moderate
+      - name: code_and_model_availability
+        description: "Whether code, checkpoints, generated data, or evaluation scripts are public."
+        detail_level: moderate
+  - name: "Research Positioning"
+    category: "Research Positioning"
+    fields:
+      - name: core_hypothesis
+        description: "Why diffusion should improve CLIP representations: feature distillation, structural prior transfer, counterfactual learning, dense supervision, synthetic corpus scaling, or continual replay."
+        detail_level: detailed
+      - name: problem_setting
+        description: "The exact representation weakness targeted, such as local semantics, attribute binding, relation reasoning, domain shift, forgetting, shortcut bias, or temporal understanding."
+        detail_level: detailed
+      - name: relation_to_clip_training
+        description: "Whether the work pretrains CLIP, fine-tunes CLIP, trains adapters/prompts, distills into CLIP, filters data, or only evaluates CLIP."
+        detail_level: moderate
+  - name: "Diffusion Role and Signal"
+    category: "Diffusion Role and Signal"
+    fields:
+      - name: diffusion_role
+        description: "Role of the diffusion model: teacher, feature extractor, generator, counterfactual editor, replay engine, region supervisor, evaluator, or filter."
+        detail_level: detailed
+      - name: diffusion_backbone_family
+        description: "Backbone family and model scale, such as LDM/U-Net, Stable Diffusion, SDXL/SD3, DiT/Flux, video diffusion, or domain-specific diffusion."
+        detail_level: moderate
+      - name: signal_extraction_protocol
+        description: "Specific layers, timesteps, attention maps, latent features, VAE features, score/noise predictions, output projections, inversion steps, or denoising trajectories used."
+        detail_level: detailed
+      - name: generator_adaptation_strategy
+        description: "Whether the generator is frozen or adapted through LoRA, DreamBooth, textual inversion, concept learning, domain fine-tuning, or task-specific tuning."
+        detail_level: detailed
+  - name: "CLIP Optimization Target"
+    category: "CLIP Optimization Target"
+    fields:
+      - name: clip_backbone_and_component
+        description: "CLIP/VLM backbone and optimized component: image encoder, text encoder, projection head, prompt learner, adapter, LoRA, region head, or full model."
+        detail_level: detailed
+      - name: transfer_mechanism
+        description: "Mechanism that transfers diffusion knowledge to CLIP: feature alignment, distillation, contrastive training, pseudo-label supervision, consistency regularization, or replay."
+        detail_level: detailed
+      - name: training_objectives
+        description: "Losses used, including InfoNCE, region-text alignment, counterfactual consistency, inter-set/intra-set contrast, ranking/margin loss, distillation, and causal invariance."
+        detail_level: detailed
+      - name: representation_target
+        description: "Representation dimensions targeted: global semantics, local regions, attributes, relations, actions, anomalies, domain concepts, robustness, or temporal cues."
+        detail_level: detailed
+  - name: "Synthetic and Counterfactual Data"
+    category: "Synthetic and Counterfactual Data"
+    fields:
+      - name: synthetic_regime
+        description: "Training data regime: synthetic-only, real+synthetic mixed, offline augmentation, online generation, replay, condensation, or pretraining replacement."
+        detail_level: moderate
+      - name: prompt_and_caption_source
+        description: "Source of prompts and captions: dataset labels, templates, LLMs, human annotation, captioners, generated scene graphs, or counterfactual instructions."
+        detail_level: detailed
+      - name: data_scale_and_mix
+        description: "Number of generated samples, real/synthetic ratio, class balance, attribute/relation coverage, and whether generation is class- or instance-conditioned."
+        detail_level: detailed
+      - name: filtering_and_quality_control
+        description: "Filtering, scoring, deduplication, human review, CLIP/VLM validation, image quality constraints, and semantic consistency checks."
+        detail_level: detailed
+      - name: data_condensation_or_curriculum
+        description: "How synthetic samples are selected, ordered, replayed, or budgeted to maximize representation benefit per sample."
+        detail_level: moderate
+  - name: "Counterfactual Validity"
+    category: "Counterfactual Validity"
+    fields:
+      - name: intervention_schema
+        description: "Intervention type: attribute, relation, spatial layout, action, anomaly cue, domain style, background, spurious cue, or multiple-factor intervention."
+        detail_level: detailed
+      - name: counterfactual_validity
+        description: "Evidence for minimality, identity/content preservation, edit locality, causal faithfulness, label correctness, and temporal consistency."
+        detail_level: detailed
+      - name: set_structure_and_hardness_policy
+        description: "Whether samples form pairs, tuples, or sets; how hard negatives are defined; whether active sampling or curriculum hardness is used."
+        detail_level: detailed
+      - name: shortcut_and_bias_probe
+        description: "Whether the method explicitly generates or evaluates spurious factors, shortcuts, background correlations, or domain artifacts."
+        detail_level: moderate
+  - name: "Video and Temporal Setting"
+    category: "Video and Temporal Setting"
+    fields:
+      - name: temporal_supervision_details
+        description: "Frame/clip/prompt granularity, motion consistency, edit propagation, temporal localization signal, and whether video diffusion is used."
+        detail_level: detailed
+      - name: video_anomaly_relevance
+        description: "Whether the method can improve video anomaly detection, weak temporal localization, abnormal cue representation, or FGCLIP-style video-language alignment."
+        detail_level: detailed
+  - name: "Evaluation"
+    category: "Evaluation"
+    fields:
+      - name: evaluation_protocol
+        description: "Tasks and settings: zero-shot, linear probe, fine-tune, retrieval, segmentation, compositional reasoning, OOD robustness, fine-grained recognition, or video anomaly detection."
+        detail_level: detailed
+      - name: datasets_and_metrics
+        description: "Datasets, splits, metrics, and whether evaluation includes both general-purpose and target-domain benchmarks."
+        detail_level: detailed
+      - name: baselines
+        description: "CLIP baselines, data augmentation baselines, real-data matched baselines, distillation baselines, adapter/prompt baselines, and compute-matched comparisons."
+        detail_level: detailed
+      - name: empirical_findings
+        description: "Where the method improves, where it fails, whether gains transfer across backbones/tasks, and what representation changes are demonstrated."
+        detail_level: detailed
+      - name: ablations
+        description: "Ablations for diffusion model choice, signal layer/timestep, synthetic ratio, prompt strategy, filtering threshold, loss design, adapter capacity, and compute budget."
+        detail_level: detailed
+  - name: "Practicality and Risk"
+    category: "Practicality and Risk"
+    fields:
+      - name: cost_normalized_utility
+        description: "Generation/training cost, GPU hours, storage, inference overhead, samples-per-gain, and whether the method is practical under constrained budgets."
+        detail_level: moderate
+      - name: synthetic_bias_and_leakage_audit
+        description: "Checks for prompt leakage, generator memorization, distribution mismatch, aesthetic/style bias, copyright/licensing concerns, and benchmark contamination."
+        detail_level: detailed
+      - name: limitations
+        description: "Methodological, empirical, reproducibility, scalability, fairness, and domain-transfer limitations."
+        detail_level: detailed
+      - name: relevance_to_current_project
+        description: "Concrete applicability to CueBench, semantic counterfactual generation, CLIPDiffusion annotation workflows, FGCLIP, and video anomaly pipelines."
+        detail_level: detailed
+uncertain:
+  - "Whether some 2025/2026 preprints have stable peer-reviewed versions."
+  - "Whether reported gains come from better CLIP representations or from benchmark-specific synthetic distribution matching."
+  - "Whether DiT internal signals can be extracted reliably across proprietary or closed diffusion backbones."
+  - "Whether video counterfactual diffusion can preserve temporal consistency well enough for weakly supervised anomaly localization."
