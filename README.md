@@ -1,70 +1,79 @@
-# Diffusion-to-CLIP Representation Research
+# Research Directions
 
-This repository contains a structured deep-research study on using diffusion models to improve CLIP / VLM representations, with emphasis on:
+这是一个用来持续记录研究方向探索过程的仓库。它不是单篇论文笔记，而是一个研究路线站点：每个方向都会保存调研时间、论文地图、阶段性结论、可复现实验想法，以及原始 deep-research 结构化结果。
 
-- diffusion-to-CLIP representation distillation;
-- diffusion internal features as auxiliary visual representations;
-- dense region / patch supervision from diffusion attention or feature maps;
-- counterfactual and domain-specific generation for CLIP adaptation;
-- relevance to CueBench, CLIPDiffusion, FGCLIP, and video anomaly detection.
+当前仓库会优先服务我的 CLIP / diffusion / video anomaly 方向探索。后续每开启一个新方向，都在 `directions/` 下建立独立页面，主页只保留方向索引和最新状态。
 
-## Key Takeaway
+## Direction Index
 
-The most promising direction is not simply generating more synthetic images for CLIP. The stronger research path is:
+| 方向 | 当前状态 | 上一次探索时间 | 论文/主题数 | 入口 |
+| --- | --- | --- | ---: | --- |
+| 使用 diffusion 优化 CLIP 表征 | 已完成第一轮系统调研，进入方法设计与实验拆解 | 2026-06-18 | 26 | [方向页](directions/diffusion-clip-representation.md) |
 
-```text
-frozen or mostly frozen CLIP / FGCLIP encoder
-+ diffusion reconstruction feedback or dense feature supervision
-+ lightweight patch adapters
-+ contrastive preservation of CLIP text alignment
-+ anomaly / counterfactual local cue objectives
-```
+## What This Site Records
 
-In short: use diffusion as a teacher, feature reservoir, reconstructor, or dense pseudo-label source.
+每个研究方向建议固定记录这些内容：
 
-## Files
+- 研究问题：这个方向到底想解决什么表征、数据或评估问题。
+- 更新时间：上一次系统调研、补充论文、修改结论的日期。
+- 论文地图：按方法路线整理论文，而不是只按年份堆列表。
+- 当前共识：这个方向目前主流工作都在做什么。
+- 对我项目的关系：它如何连接 CueBench、CLIPDiffusion、FGCLIP、video anomaly 或其他当前实验。
+- 可执行下一步：最小可跑实验、关键 ablation、风险检查。
+- 原始证据：deep-research 生成的 JSON、outline、field schema 和报告文件。
 
-- `outline.yaml`: research outline and item list.
-- `fields.yaml`: schema used by the deep-research JSON files.
-- `focused_diffusion_clip_distillation_memo.md`: focused memo on the directions closest to the current project.
-- `report.md`: human-readable research summary.
-- `results/*.json`: structured deep-research outputs for 26 research items.
+## Current Main Direction
 
-## Most Relevant Results
+### 使用 diffusion 优化 CLIP 表征
 
-Start with these files:
+这个方向关注如何把 diffusion model 的生成先验、重建反馈、内部 dense feature、attention/concept map 或 counterfactual editing 能力转移到 CLIP / VLM 表征中。
 
-- `results/Diffusion_Feedback_Reconstruction_for_CLIP_Posttraining.json`
-- `results/Globaltoken_Conditioned_Generative_Enhancement.json`
-- `results/Contrastiveguided_Diffusion_Reconstruction_for_Balanced_CLIP_Features.json`
-- `results/unCLIP_Inversion_for_CLIP_Detail_Preservation.json`
-- `results/Layer_and_Timestep_Selection_for_Diffusion_Feature_Transfer.json`
-- `results/Diffusion_Feature_Fusion_for_CLIP_and_VLM_Encoders.json`
-- `results/CLIP_Patch_Adapters_from_Diffusion_Dense_Signals.json`
-- `results/Representation_Distillation_Between_Diffusion_and_CLIP.json`
-- `results/Diffusion_Features_as_Auxiliary_Representation.json`
+阶段性结论是：最值得做的不是简单生成更多 synthetic image 去扩充 CLIP 训练集，而是把 diffusion 当作：
 
-## Suggested Prototype
+- visual teacher；
+- reconstruction feedback provider；
+- dense feature reservoir；
+- region / patch pseudo-label source；
+- counterfactual cue generator。
+
+目前最适合当前项目的路线是：
 
 ```text
-video frame
-  -> CLIP / FGCLIP image encoder
-  -> patch tokens
-
-same frame + prompt
-  -> frozen diffusion model
-  -> selected dense feature / attention / concept map
-
-patch adapter
-  -> align CLIP local features to diffusion dense cues
-  -> preserve global CLIP image-text alignment
-  -> feed into video anomaly / temporal localization head
+frozen or mostly frozen CLIP / FGCLIP
++ diffusion dense feature / reconstruction supervision
++ lightweight patch adapter
++ global CLIP text alignment preservation
++ abnormal cue / counterfactual consistency objective
 ```
 
-Recommended first experiments:
+更完整的论文地图和方法总结见：
 
-1. Probe diffusion layer / timestep features.
-2. Add a lightweight CLIP patch adapter.
-3. Compare CLIP-only, CLIP+adapter, CLIP+diffusion-fusion, and CLIP+diffusion-distillation.
-4. Evaluate on fine-grained cue retrieval and video anomaly metrics.
+- [方向页：使用 diffusion 优化 CLIP 表征](directions/diffusion-clip-representation.md)
+- [完整调研报告](report.md)
+- [聚焦 memo：diffusion-to-CLIP distillation](focused_diffusion_clip_distillation_memo.md)
 
+## Repository Structure
+
+```text
+.
+├── README.md
+├── directions/
+│   ├── diffusion-clip-representation.md
+│   └── TEMPLATE.md
+├── outline.yaml
+├── fields.yaml
+├── report.md
+├── focused_diffusion_clip_distillation_memo.md
+└── results/
+    └── *.json
+```
+
+## Maintenance Notes
+
+当继续调研某个方向时，建议同步更新三处：
+
+1. `directions/<direction>.md`：更新探索时间、论文地图、阶段性结论。
+2. `README.md`：更新主页方向索引里的“上一次探索时间”和状态。
+3. `results/`：保留每轮 deep-research 的结构化 JSON，方便之后让 Codex 或本地脚本继续解析。
+
+如果新增研究方向，复制 [directions/TEMPLATE.md](directions/TEMPLATE.md) 后填写即可。
