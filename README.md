@@ -8,7 +8,7 @@
 
 | 方向 | 当前状态 | 上一次探索时间 | 论文/主题数 | 入口 |
 | --- | --- | --- | ---: | --- |
-| 使用 diffusion 优化 CLIP 表征 | 已完成第一轮系统调研，进入方法设计与实验拆解 | 2026-06-18 | 26 | [方向页](directions/diffusion-clip-representation/) |
+| 使用 diffusion 优化 CLIP 表征 | 已完成第一轮系统调研，已补充工程代码底座选择 | 2026-06-20 | 26 | [方向页](directions/diffusion-clip-representation/) |
 
 ## What This Site Records
 

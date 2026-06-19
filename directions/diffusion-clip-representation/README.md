@@ -5,11 +5,13 @@
 | 字段 | 内容 |
 | --- | --- |
 | 研究方向 | 使用 diffusion 生成/监督/蒸馏来优化 CLIP / VLM 表征 |
-| 当前阶段 | 第一轮系统调研完成，正在收敛到可实验的方法路线 |
-| 上一次探索时间 | 2026-06-18 |
+| 当前阶段 | 第一轮系统调研完成，已补充可作为工程底座的 GitHub 仓库调研 |
+| 上一次探索时间 | 2026-06-20 |
 | 调研范围 | 2024 年以来 diffusion-to-CLIP representation、dense supervision、counterfactual generation、feature fusion、reconstruction feedback |
 | 已调研主题数 | 26 |
+| 代码底座候选数 | 13 |
 | 原始结果 | [`results/*.json`](results/) |
+| 代码底座调研 | [`implementation_bases.md`](implementation_bases.md) |
 | 完整报告 | [`report.md`](report.md) |
 | 聚焦 memo | [`focused_diffusion_clip_distillation_memo.md`](focused_diffusion_clip_distillation_memo.md) |
 
@@ -230,11 +232,12 @@ feature: cross-attention query, attention output, residual output
 
 ## Files To Read First
 
-1. [`report.md`](report.md)：完整调研总结。
-2. [`focused_diffusion_clip_distillation_memo.md`](focused_diffusion_clip_distillation_memo.md)：最贴近当前方法设计的聚焦 memo。
-3. [`results/Diffusion_Feedback_Reconstruction_for_CLIP_Posttraining.json`](results/Diffusion_Feedback_Reconstruction_for_CLIP_Posttraining.json)：DIVA / GenHancer / DCR / un2CLIP 相关路线。
-4. [`results/CLIP_Patch_Adapters_from_Diffusion_Dense_Signals.json`](results/CLIP_Patch_Adapters_from_Diffusion_Dense_Signals.json)：当前最可执行的 patch adapter 路线。
-5. [`results/Layer_and_Timestep_Selection_for_Diffusion_Feature_Transfer.json`](results/Layer_and_Timestep_Selection_for_Diffusion_Feature_Transfer.json)：feature selection 的实验依据。
+1. [`implementation_bases.md`](implementation_bases.md)：哪些 GitHub 仓库适合直接作为工程底座。
+2. [`report.md`](report.md)：完整调研总结。
+3. [`focused_diffusion_clip_distillation_memo.md`](focused_diffusion_clip_distillation_memo.md)：最贴近当前方法设计的聚焦 memo。
+4. [`results/Diffusion_Feedback_Reconstruction_for_CLIP_Posttraining.json`](results/Diffusion_Feedback_Reconstruction_for_CLIP_Posttraining.json)：DIVA / GenHancer / DCR / un2CLIP 相关路线。
+5. [`results/CLIP_Patch_Adapters_from_Diffusion_Dense_Signals.json`](results/CLIP_Patch_Adapters_from_Diffusion_Dense_Signals.json)：当前最可执行的 patch adapter 路线。
+6. [`results/Layer_and_Timestep_Selection_for_Diffusion_Feature_Transfer.json`](results/Layer_and_Timestep_Selection_for_Diffusion_Feature_Transfer.json)：feature selection 的实验依据。
 
 ## Update Log
 
@@ -242,3 +245,4 @@ feature: cross-attention query, attention output, residual output
 | --- | --- |
 | 2026-06-18 | 完成 26 个 research items 的 deep-research，生成 `results/*.json`、`report.md` 和聚焦 memo。 |
 | 2026-06-19 | 将仓库结构调整为研究方向探索站点，新增方向页、主页索引和维护模板。 |
+| 2026-06-20 | 补充可作为工程底座的 GitHub 仓库调研，新增 `implementation_bases.md`。 |
