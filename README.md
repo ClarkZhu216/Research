@@ -8,7 +8,7 @@
 
 | 方向 | 当前状态 | 上一次探索时间 | 论文/主题数 | 入口 |
 | --- | --- | --- | ---: | --- |
-| 使用 diffusion 优化 CLIP 表征 | 已完成第一轮系统调研，进入方法设计与实验拆解 | 2026-06-18 | 26 | [方向页](directions/diffusion-clip-representation.md) |
+| 使用 diffusion 优化 CLIP 表征 | 已完成第一轮系统调研，进入方法设计与实验拆解 | 2026-06-18 | 26 | [方向页](directions/diffusion-clip-representation/) |
 
 ## What This Site Records
 
@@ -48,9 +48,9 @@ frozen or mostly frozen CLIP / FGCLIP
 
 更完整的论文地图和方法总结见：
 
-- [方向页：使用 diffusion 优化 CLIP 表征](directions/diffusion-clip-representation.md)
-- [完整调研报告](report.md)
-- [聚焦 memo：diffusion-to-CLIP distillation](focused_diffusion_clip_distillation_memo.md)
+- [方向页：使用 diffusion 优化 CLIP 表征](directions/diffusion-clip-representation/)
+- [完整调研报告](directions/diffusion-clip-representation/report.md)
+- [聚焦 memo：diffusion-to-CLIP distillation](directions/diffusion-clip-representation/focused_diffusion_clip_distillation_memo.md)
 
 ## Repository Structure
 
@@ -58,22 +58,23 @@ frozen or mostly frozen CLIP / FGCLIP
 .
 ├── README.md
 ├── directions/
-│   ├── diffusion-clip-representation.md
-│   └── TEMPLATE.md
-├── outline.yaml
-├── fields.yaml
-├── report.md
-├── focused_diffusion_clip_distillation_memo.md
-└── results/
-    └── *.json
+│   ├── TEMPLATE.md
+│   └── diffusion-clip-representation/
+│       ├── README.md
+│       ├── outline.yaml
+│       ├── fields.yaml
+│       ├── report.md
+│       ├── focused_diffusion_clip_distillation_memo.md
+│       └── results/
+│           └── *.json
 ```
 
 ## Maintenance Notes
 
 当继续调研某个方向时，建议同步更新三处：
 
-1. `directions/<direction>.md`：更新探索时间、论文地图、阶段性结论。
+1. `directions/<direction>/README.md`：更新探索时间、论文地图、阶段性结论。
 2. `README.md`：更新主页方向索引里的“上一次探索时间”和状态。
-3. `results/`：保留每轮 deep-research 的结构化 JSON，方便之后让 Codex 或本地脚本继续解析。
+3. `directions/<direction>/results/`：保留每轮 deep-research 的结构化 JSON，方便之后让 Codex 或本地脚本继续解析。
 
-如果新增研究方向，复制 [directions/TEMPLATE.md](directions/TEMPLATE.md) 后填写即可。
+如果新增研究方向，复制 [directions/TEMPLATE.md](directions/TEMPLATE.md) 到 `directions/<new-direction>/README.md` 后填写即可。

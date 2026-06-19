@@ -9,8 +9,8 @@
 | 上一次探索时间 | YYYY-MM-DD |
 | 调研范围 |  |
 | 已调研主题数 |  |
-| 原始结果 |  |
-| 完整报告 |  |
+| 原始结果 | [`results/`](results/) |
+| 完整报告 | [`report.md`](report.md) |
 
 ## Research Question
 
@@ -24,7 +24,7 @@
 
 | 论文/方向 | 核心作用 | 对当前项目的启发 | 原始结果 |
 | --- | --- | --- | --- |
-|  |  |  |  |
+|  |  |  | `results/<paper>.json` |
 
 ## What The Field Is Doing
 
@@ -58,7 +58,21 @@ model / data / objective sketch
 
 ## Files To Read First
 
-1. 
+1. `report.md`
+2. `results/`
+
+## Suggested Directory Layout
+
+```text
+directions/<direction-name>/
+├── README.md
+├── outline.yaml
+├── fields.yaml
+├── report.md
+├── focused_memo.md
+└── results/
+    └── *.json
+```
 
 ## Update Log
 
